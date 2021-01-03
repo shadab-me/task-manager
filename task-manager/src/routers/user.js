@@ -14,7 +14,12 @@ router.post("/users", async (req, res) => {
 });
 router.post("/users/login", async (req, res) => {
   try {
-    res.status(201).send("Done");
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password
+    );
+    const token = await user.generateAuthToken();
+    res.send({ user, token });
   } catch (e) {}
 });
 router.get("/users", async (req, res) => {
