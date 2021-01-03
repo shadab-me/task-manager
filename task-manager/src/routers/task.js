@@ -3,11 +3,10 @@ const Task = require("../models/task");
 const router = new express.Router();
 const auth = require("../middleware/auth");
 
-router.post("/tasks", async (req, res) => {
-  const task = new Task(req.body);
-
+router.post("/tasks", auth, async (req, res) => {
+  console.log(req.header("Authorization"));
   try {
-    await task.save();
+    let task = await Task.create(req.body);
     res.status(201).send(task);
   } catch (e) {
     res.status(400).send(e);

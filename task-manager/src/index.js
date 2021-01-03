@@ -19,7 +19,7 @@ const bcrypt = require("bcryptjs");
 
 const myFunction = async () => {
   jwt.sign({ id: "0001233" }, "this", function (err, result) {
-    console.log(result, 1);
+    console.log(result);
   });
 };
 
