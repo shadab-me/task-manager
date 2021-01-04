@@ -15,12 +15,8 @@ app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
 
-const bcrypt = require("bcryptjs");
+const Task = require("./models/task");
 
-const myFunction = async () => {
-  jwt.sign({ id: "0001233" }, "this", function (err, result) {
-    console.log(result);
-  });
-};
+const myFunction = async () => {};
 
 myFunction();
